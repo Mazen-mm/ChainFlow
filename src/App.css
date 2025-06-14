@@ -1,0 +1,77 @@
+#root {
+  margin: auto;
+  width: 80%;
+  box-sizing: border-box;
+  text-decoration: none !important;
+  list-style: none !important;
+  outline: none !important;
+  font-weight: 400;
+}
+
+.primary {
+  background: #0F345C;
+}
+.blueAccent {
+  background: #5C8DFF;
+}
+.lightAccent {
+  background: #A7B7FF;
+}
+.whiteBg {
+  background: #F2F3FF;
+}
+.lightBg {
+  background: #E2E7FF;
+}
+.whiteText {
+  background: #F2F3FF;
+}
+.blueText {
+  background: #3167C9;
+}
+.darkText {
+  background: #061726;
+}
+
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+
+.btn-primary {
+  background-color: #071051;
+  border: none;
+}
+
+.lay {
+  position: absolute;
+  width: 1242px;
+  height: 1242px;
+  left: -720px;
+  bottom: -100px;
+  border-radius: 15%;
+  background: linear-gradient(135deg, #D5D8FA 32.97%, #D1D5FA 67.6%, #A7B7FF 102.23%);
+  transform: rotate(-15deg);
+  box-shadow: 4px 4px 64px #A7B7FF, inset 0px 0px 16px #F2F3FF;
+}
+
+.verify {
+  width: 50%;
+  height: 80%;
+  padding: 3rem 2rem;
+  background: linear-gradient(-65deg, #D5D8FA 32.97%, #D1D5FA 67.6%, #A7B7FF 102.23%);
+  box-shadow: 4px 4px 64px #A7B7FF, inset 0px 0px 16px #F2F3FF;
+  border-radius: 100px;
+}
+
+
+.code-input {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
