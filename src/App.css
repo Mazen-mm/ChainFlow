@@ -1,15 +1,19 @@
-#root {
-  margin: auto;
-  width: 80%;
-  box-sizing: border-box;
-  text-decoration: none !important;
-  list-style: none !important;
-  outline: none !important;
-  font-weight: 400;
+/* ////////////////////////// */
+/* ////////////////////////// */
+
+.row {
+  padding: 0%;
+  margin: 0%;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 7%;
 }
 
 .primary {
   background: #0F345C;
+  color: white
 }
 .blueAccent {
   background: #5C8DFF;
@@ -32,26 +36,24 @@
 .darkText {
   background: #061726;
 }
-
-/* ////////////////////////// */
-/* ////////////////////////// */
-/* ////////////////////////// */
-/* ////////////////////////// */
-/* ////////////////////////// */
-/* ////////////////////////// */
-/* ////////////////////////// */
-/* ////////////////////////// */
-
 .btn-primary {
   background-color: #071051;
   border: none;
 }
+.PrimaryText{
+  color: #0f345c;
+}
 
-.lay {
+/* ////////////////////////// */
+/* ////////////////////////// */
+/* ////////////////////////// */
+
+/* Auth */
+.layer {
   position: absolute;
   width: 1242px;
   height: 1242px;
-  left: -720px;
+  left: -700px;
   bottom: -100px;
   border-radius: 15%;
   background: linear-gradient(135deg, #D5D8FA 32.97%, #D1D5FA 67.6%, #A7B7FF 102.23%);
@@ -62,16 +64,100 @@
 .verify {
   width: 50%;
   height: 80%;
-  padding: 3rem 2rem;
+  padding: 4%;
   background: linear-gradient(-65deg, #D5D8FA 32.97%, #D1D5FA 67.6%, #A7B7FF 102.23%);
   box-shadow: 4px 4px 64px #A7B7FF, inset 0px 0px 16px #F2F3FF;
-  border-radius: 100px;
+  border-radius: 15%;
 }
 
-
 .code-input {
-  width: 40px;
-  height: 40px;
-  font-size: 1rem;
+  width: 7%;
   border-radius: 10px;
+}
+
+/***      Sidebar      ***/
+.sidebar .nav-link {
+  background-color: transparent;
+  color: #071051;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.sidebar .nav-link.active{
+  background-color: #071051;
+  color: white;
+}
+
+/* landing */
+/* .bg1{
+position: absolute;
+width: 292px;
+height: 292px;
+left: 1029px;
+top: 460px;
+background: #5C8DFF;
+filter: blur(125px);
+}
+
+.bg2{
+position: absolute;
+width: 292px;
+height: 292px;
+left: 631px;
+top: 190px;
+background: rgba(199, 45, 202, 0.8);
+filter: blur(125px);
+}
+
+.bg3{
+position: absolute;
+width: 480px;
+height: 480px;
+left: 750px;
+top: 171px;
+background: #0F345C;
+}
+
+.bg4{
+position: absolute;
+width: 292px;
+height: 292px;
+left: 996px;
+top: 145px;
+background: rgba(255, 92, 92, 0.7);
+filter: blur(125px);
+}
+
+.bg5{
+position: absolute;
+width: 516px;
+height: 516px;
+left: 732px;
+top: 153px;
+background: #0F345C;
+filter: blur(125px);
+}  */
+
+
+.bgCircle {
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 90%;
+  background: radial-gradient(#7886b1, #19034e);
+  border-radius: 50%;
+}
+.smallSize{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: small;
+  color: #0F345C;
+}
+
+.bgIcon{
+  font-size: 25px;
+  width: 45px;
+  height: 45px;
+  background:  #E2E7FF;
+  border-radius: 50%;
 }

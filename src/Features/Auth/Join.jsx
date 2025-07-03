@@ -1,10 +1,9 @@
-import React from 'react'
-import logo from '../../../assets/Images/logo.png';
+import logo from '../../assets/Images/logo.png';
 
 export default function Join() {
   return <>
-    <div className=" vh-100 lightBg d-flex justify-content-center align-items-center">
-  
+    <h1 className='text-center'>Join</h1>
+    <div className="row lightBg min-vh-100 justify-content-center align-items-center">
       <div className="verify mx-auto" style={{ background:" linear-gradient(135deg, #D5D8FA 32.97%, #D1D5FA 67.6%, #A7B7FF 102.23%)"}}>
         <div className="text-center mb-4">
           <img src={logo} className='my-3 w-50' alt="" />

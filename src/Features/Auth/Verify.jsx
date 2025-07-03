@@ -1,10 +1,10 @@
-import logo from '../../../assets/Images/logo.png';
+import logo from '../../assets/Images/logo.png';
 
 
 export default function Verify() {
   return <>
-  <div className=" vh-100 lightBg d-flex justify-content-center align-items-center">
-
+  <h1 className='text-center'>Verify</h1>
+  <div className="row lightBg min-vh-100 justify-content-center align-items-center">
     <div className="verify mx-auto">
       <div className="text-center">
         <img src={logo} className='my-3 w-50' alt="" />
@@ -15,7 +15,7 @@ export default function Verify() {
       </div>
         {/* Code inputs */}
         <p className='text-center text-primary '>Enter your code</p>
-        <div className="d-flex justify-content-center gap-2 mb-5">
+        <div className="d-flex justify-content-center gap-2 mb-3">
           {[...Array(6)].map((_, idx) => (
             <input key={idx} type="text" maxLength="1" className="form-control code-input text-center"/>
           ))}
