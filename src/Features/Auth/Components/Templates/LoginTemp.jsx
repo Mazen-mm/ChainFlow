@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import FormButton from "../Atoms/FormButton"; 
 import FormInputs from "../Atoms/FormInputs"; 
 import FormCheck from "../Atoms/FormCheck";
@@ -10,10 +11,10 @@ import { useAuth } from "../../../../ProtectedRoute/ProtectedRoute";
 export default function LoginTemp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { setIsAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const API_URL = `${BASE_URL}/api/auth/login`;
 
   const handleSubmit = async (e) => {
@@ -22,26 +23,14 @@ export default function LoginTemp() {
     setError(null);
 
     try {
-      const response = await axios.post(
-        API_URL,
-        { email, password },
-        {
-          withCredentials: true, 
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-      console.log("Response:", response.data);
-      console.log("Headers:", response.headers);
-      console.log("Status:", response.status);
-      setUserData(response.data);
-      console.log("Login successful:", response.data);
+      const formData = { email, password };
+      const res = await axios.post(API_URL, formData);
       setIsAuthenticated(true); 
+      setLoading(false);
+      navigate('/home'); 
     } catch (err) {
-      setError(err.response?.data?.message || "An error occurred");
-    } finally {
+      const errMsg = err.response?.data?.message || 'Login failed. Please try again.';
+      setError(errMsg);
       setLoading(false);
     }
   };
@@ -53,14 +42,16 @@ export default function LoginTemp() {
           type="text"
           placeholder="User Name"
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
         <FormInputs
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
         <FormCheck />
-        <FormButton nameBtn={loading ? "Logging In..." : "Log In"} />
+        <FormButton nameBtn={loading ? "Logging In..." : "Log In"} disabled={loading} />
         <FormPgh pgh="Don't have an account?" formNav=" Sign Up" to="/auth/signup" />
       </form>
 
