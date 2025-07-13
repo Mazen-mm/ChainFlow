@@ -1,4 +1,5 @@
 import Demo from "./Components/Organisms/Demo";
+import Footer from "./Components/Organisms/Footer";
 import HomeBg from "./Components/Organisms/HomeBg";
 import KeyFeatures from "./Components/Organisms/KeyFeatures";
 import OurCustomers from "./Components/Organisms/OurCustomers";
@@ -14,5 +15,6 @@ export default function LandingPage() {
     <OurCustomers/>
     <Plan/>
     <Demo/>
+    <Footer/>
   </>
 }

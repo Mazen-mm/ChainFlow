@@ -6,7 +6,7 @@ export default function Plan() {
     <h2>Choose Your Plan</h2>
     <p>Flexible pricing options to fit businesses of all sizes.</p>
     <div className="row row-cols-md-3 mx-auto container g-4">
-      <div className="col-sm-12">
+      <div className="col-sm-12 py-4">
         <div className="card h-100 text-start PrimaryText d-flex justify-content-between">
             <h5>Basic</h5>
             <h2>$499<span style={{fontSize:'x-small'}}>/month</span></h2>
@@ -36,7 +36,7 @@ export default function Plan() {
           <button className='btn blueAccent'>Contact Sales</button>
         </div>
       </div>
-      <div className="col-sm-12">
+      <div className="col-sm-12 py-4">
         <div className="card h-100 text-start PrimaryText d-flex justify-content-between">
             <h5>Enterprise</h5>
             <h2>Custom</h2>

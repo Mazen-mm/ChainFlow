@@ -12,6 +12,9 @@ import Documents from '../Features/Layout/Pages/Documents/Documents';
 import Partners from '../Features/Layout/Pages/Partners/Partners';
 import Home from '../Features/Home/Home'
 import Notfound from '../Shared/Notfound/Notfound';
+import Notifications from './../Features/Layout/Pages/Notifications/Notifications';
+import Support from './../Features/Layout/Pages/Support/Support';
+import LogOut from './../Features/Layout/Pages/LogOut/LogOut';
 
 export default function App() {
 
@@ -23,12 +26,17 @@ export default function App() {
         { path:'orders' , element: <Orders/>},
         { path:'documents' , element: <Documents/>},
         { path:'partners' , element: <Partners/>},
+        { path:'notifications' , element: <Notifications/>},
+        { path:'support' , element: <Support/>},
+        { path:'logout' , element: <LogOut/>},
         { path:"*" , element: <Notfound/>},
       ]
     },
   ])
 
   return <>
+      <RouterProvider router={Routes}></RouterProvider>
+      <hr />
       <div><Home/></div>
       <hr />
       <div><AuthLayout/></div>
@@ -36,8 +44,6 @@ export default function App() {
       <div><Verify/></div>
       <hr />
       <div><Join/></div>
-      <hr />
-      <RouterProvider router={Routes}></RouterProvider>
       <hr />
   </>
 }
