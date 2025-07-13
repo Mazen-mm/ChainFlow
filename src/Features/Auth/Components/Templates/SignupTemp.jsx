@@ -1,16 +1,60 @@
-import FormInputs from '../Atoms/FormInputs'
-import FormButton from '../Atoms/FormButton'
-import FormPgh from '../Atoms/FormPgh'
+import FormInputs from "../Atoms/FormInputs";
+import FormButton from "../Atoms/FormButton";
+import FormPgh from "../Atoms/FormPgh";
 
 export default function SignupTemp() {
-  return  <>
-    <form>
-      <FormInputs type="text" placeholder="User Name" />
-      <FormInputs type="email" placeholder="Email" />
-      <FormInputs type="password" placeholder="Password" />
-      <FormInputs type="password" placeholder="Confirm Password" />
-      <FormButton nameBtn='Sign Up' />
-      <FormPgh pgh="Already have an account?" formNav='Log In' />
-    </form>
-  </>
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [size, setSize] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [locationName, setLocationName] = useState("");
+  return (
+    <>
+      <form>
+        <FormInputs
+          type="text"
+          placeholder="Name"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <FormInputs
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <FormInputs
+          type="text"
+          placeholder="User Name"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <FormInputs
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <FormInputs
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <FormInputs
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <FormInputs
+          type="text"
+          placeholder="Company Name"
+          onChange={(e) => setCompanyName(e.target.value)}
+        />
+        <FormButton nameBtn="Sign Up" />
+        <FormPgh
+          pgh="Already have an account?"
+          formNav="Log In"
+          to="/auth/login"
+        />
+      </form>
+    </>
+  );
 }

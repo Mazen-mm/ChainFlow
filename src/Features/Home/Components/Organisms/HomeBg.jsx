@@ -1,5 +1,6 @@
 import landPage from '../../../../assets/Images/land.png';
 import { Brand } from '../../../../assets/Icons/SVG.jsx';
+import { Link } from 'react-router-dom';
 
 export default function HomeBg() {
 
@@ -10,7 +11,7 @@ export default function HomeBg() {
         <Brand/>
         <div className='d-flex gap-3'>
           <button className="btn btn-primary">Get Started</button>
-          <button className="btn btn-light border-1 border-dark border-opacity-25">Log in</button>
+          <Link to="/auth/login" className="btn btn-light border-1 border-dark border-opacity-25">Log in</Link>
         </div>
       </div>
 
