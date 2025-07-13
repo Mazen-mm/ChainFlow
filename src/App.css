@@ -8,8 +8,13 @@
 
 .card {
   border-radius: 20px;
-  padding: 7%;
+  padding: 10px;
 }
+
+p{
+  margin: 0%;
+}
+
 
 .primary {
   background: #0F345C;
@@ -33,7 +38,7 @@
 .blueText {
   background: #3167C9;
 }
-.darkText {
+.DarkBg {
   background: #061726;
 }
 .btn-primary {
@@ -161,3 +166,4 @@ filter: blur(125px);
   background:  #E2E7FF;
   border-radius: 50%;
 }
+

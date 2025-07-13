@@ -1,7 +1,9 @@
-import logo from '../../../../assets/Images/logo.png';
+import { ChainLogo } from '../../../../assets/Icons/SVG';
 
 export default function FormLogo() {
   return <>
-    <div className="text-center mx-auto"><img src={logo} className='mb-4 w-50' alt=""/></div>
+    <div className="text-center mb-4">
+      <ChainLogo fill='#0F345C' clsName='w-75'/>
+    </div>
   </>
 }
