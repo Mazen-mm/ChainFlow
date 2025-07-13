@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import FormLogo from './Components/Atoms/FormLogo';
 import DividerForm from './Components/Organisms/DividerForm';
 import RightSide from './Components/Organisms/RightSide';
@@ -15,8 +16,9 @@ export default function AuthLayout() {
           <SocialBtns/>
           <DividerForm/>
           {/* Form Template */}
-          <SignupTemp/>
-          <LoginTemp/>
+
+                  <Outlet/>
+
           {/* Form Template */}
         </div>
         <div className="layer"></div>

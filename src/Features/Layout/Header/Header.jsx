@@ -1,4 +1,4 @@
-import logoBrand from '../../../assets/Images/logo-brand.png'
+import logoBrand from '../../../assets/Images/Logo-brand.png'
 import { SettingIcon } from '../../../assets/Icons/SVG.jsx';
 
 export default function Header() {
