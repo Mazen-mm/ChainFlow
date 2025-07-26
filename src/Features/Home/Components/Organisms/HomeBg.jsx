@@ -1,8 +1,12 @@
 import landPage from '../../../../assets/Images/land.png';
 import { Brand } from '../../../../assets/Icons/SVG.jsx';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function HomeBg() {
+
+  const navDashboard = useNavigate();
+
+  // Navigate()
 
   return <>
     <div className="lightBg">
@@ -12,6 +16,7 @@ export default function HomeBg() {
         <div className='d-flex gap-3'>
           <button className="btn btn-primary">Get Started</button>
           <Link to="/auth/login" className="btn btn-light border-1 border-dark border-opacity-25">Log in</Link>
+          <button onClick={() => navDashboard('/pages/dashboard')} className='btn btn-info'>Dashboard</button>
         </div>
       </div>
 

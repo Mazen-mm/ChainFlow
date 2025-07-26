@@ -4,7 +4,7 @@ import { Chart as ChartJS , BarElement , CategoryScale , LinearScale , Tooltip, 
 import { Plane } from '../../../../../../assets/Icons/SVG';
 ChartJS.register( BarElement , CategoryScale , LinearScale , Tooltip , Legend );
 
-export default function WeeklyAverage() {
+export default function AverageCard() {
 
   const data = {
     labels: ['10', '11', '12', '13', '14'],
@@ -15,7 +15,6 @@ export default function WeeklyAverage() {
       barThickness: 7,
     }]
   };
-
 
   const options = {
     plugins: {

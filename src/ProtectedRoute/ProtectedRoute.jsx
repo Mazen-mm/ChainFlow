@@ -1,13 +1,14 @@
-import { Navigate } from "react-router-dom";
+
 import { useState, useContext, useEffect, createContext } from "react";
 
- const AuthContext = createContext();
+
+  const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
 
   useEffect(() => {
-     const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, []);
 
@@ -25,9 +26,5 @@ export function useAuth() {
 export function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
 
-//   if (!isAuthenticated) {
-    
-//     return <Navigate to="/login" replace />;
-//   }
   return children;
 }
