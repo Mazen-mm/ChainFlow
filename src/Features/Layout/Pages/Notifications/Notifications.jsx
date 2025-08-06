@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import DashBtn from './../Components/Atoms/DashBtn';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 import { ClockIcon } from '../../../../assets/Icons/SVG';
 
 export default function Notifications () {

@@ -7,13 +7,32 @@
 }
 
 .card {
-  border-radius: 20px;
   padding: 10px;
 }
 
 p{
   margin: 0%;
 }
+
+.form-check-input:checked {
+  background-color:  #0F345C;
+  border-color:  #0F345C;
+}
+
+.form-check-input:focus {
+  border-color:  #0F345C;
+  box-shadow: 0 0 0 0.25rem rgba(30, 64, 175, 0.25);
+}
+
+.form-check-input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+  border: 2px solid #d1d5db;
+  transition: all 0.2s ease;
+}
+
+
 
 .primary {
   background: #0F345C;
@@ -133,7 +152,6 @@ p{
   background-image: url(assets/Images/map.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
 }
@@ -171,3 +189,4 @@ p{
   color: #f51000;
   border-color: #ff2802;
 }
+

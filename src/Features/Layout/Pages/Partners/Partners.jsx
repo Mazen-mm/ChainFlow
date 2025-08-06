@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { BoxIcon, DocIcon, FilterIcon, LockIcon, MessageIcon, SearchIcon } from '../../../../assets/Icons/SVG';
-import DashBtn from '../Components/Atoms/DashBtn';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 
 export default function Partners () {
   const [selectedPartner, setSelectedPartner] = useState(null);

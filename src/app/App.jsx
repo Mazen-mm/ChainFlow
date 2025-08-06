@@ -1,54 +1,65 @@
+
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { store } from '../Shared/redux/store';
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import "../App.css";
+
 import AuthLayout from "../Features/Auth/AuthLayout";
-import Verify from "../Features/Auth/Verify";
-import Layout from "../Features/Layout/Layout";
-import Dashboard from "../Features/Layout/Pages/Dashboard/Dashboard";
-import Inventory from "../Features/Layout/Pages/Inventory/Inventory";
-import Shipments from "../Features/Layout/Pages/Shipments/Shipments";
-import Orders from "../Features/Layout/Pages/Orders/Orders";
-import Documents from "../Features/Layout/Pages/Documents/Documents";
-import Partners from "../Features/Layout/Pages/Partners/Partners";
-import Home from "../Features/Home/Home";
-import Notfound from "../Shared/Notfound/Notfound";
-import { AuthProvider, ProtectedRoute } from "../ProtectedRoute/ProtectedRoute"; // استيراد المكونات الجديدة
-import LoginTemp from "../Features/Auth/Components/Templates/LoginTemp";
 import SignupTemp from "../Features/Auth/Components/Templates/SignupTemp";
-import Support from './../Features/Layout/Pages/Support/Support';
-import Notifications from './../Features/Layout/Pages/Notifications/Notifications';
+import LoginTemp from "../Features/Auth/Components/Templates/LoginTemp";
+import Verify from "../Features/Auth/Verify";
+
+import Home from "../Features/Home/Home";
+
+import Layout from "../Features/Layout/Layout";
+
+import Dashboard from "../Features/Layout/Pages/Dashboard/Dashboard";
+import InventoryPage from './../Features/inventory/pages/InventoryPage';
+import ShipmentsPage from "../Features/shipments/pages/ShipmentsPage";
+import OrdersPage from "../Features/orders/pages/OrdersPage";
+import DocumentsPage from './../Features/documents/pages/DocumentsPage';
+import PartnersPage from './../Features/partners/pages/PartnersPage';
+
+import NotificationsPage from "../Features/notifications/pages/NotificationsPage";
+import Support from '../Features/support/SupportPage';
 import LogOut from './../Features/Layout/Pages/LogOut/LogOut';
-import Settings from "../Features/Layout/Pages/Settings/Settings";
-import General from './../Features/Layout/Pages/Settings/Components/General';
-import UserProfile from './../Features/Layout/Pages/Settings/Components/UserProfile';
-import Security from './../Features/Layout/Pages/Settings/Components/Security';
-import Notifs from "../Features/Layout/Pages/Settings/Components/Notifs";
-import Integrations from './../Features/Layout/Pages/Settings/Components/Integrations';
+
+import Notfound from "../Shared/Notfound/Notfound";
+
+import Settings from "../Features/settings/Settings";
+import GeneralPage from "../Features/settings/general/pages/GeneralPage";
+import UserProfilePage from './../Features/settings/userProfile/pages/UserProfilePage';
+import SecurityPage from './../Features/settings/security/pages/SecurityPage';
+import NotificationsSettingsPage from "../Features/settings/notificationSettings/pages/NotificationSettingsPage";
+import IntegrationsPage from "../Features/settings/integrations/IntegrationsPage";
 
 export default function App() {
   const Routes = createBrowserRouter([
-    {  path: "" , element: <Home />},
-    {  path: "/auth" , element: <AuthLayout /> ,  children: [
-        { path: "login", element: <LoginTemp/> }, // صفحة تسجيل الدخول
-        { path: "signup", element: <SignupTemp/> }, // صفحة تسجيل الدخول
-        { path: "verify", element: <Verify /> }, // صفحة التحقق
+    { path: "" , element: <Home />},
+    { path: "/auth" , element: <AuthLayout /> ,  children: [
+        { path: "login", element: <LoginTemp/> },
+        { path: "signup", element: <SignupTemp/> },
+        { path: "verify", element: <Verify /> },
       ],
     },
     {  path: "/pages" ,  element: <Layout /> ,  children: [
         { path: "dashboard" , element: <ProtectedRoute><Dashboard /></ProtectedRoute> },
-        { path: "inventory", element: <ProtectedRoute><Inventory /></ProtectedRoute> },
-        { path: "shipments", element: <ProtectedRoute><Shipments /></ProtectedRoute> },
-        { path: "orders", element: <ProtectedRoute><Orders /></ProtectedRoute> },
-        { path: "documents", element: <ProtectedRoute><Documents /></ProtectedRoute> },
-        { path: "partners", element: <ProtectedRoute><Partners /></ProtectedRoute> },
-        { path: "notifications", element: <ProtectedRoute><Notifications /></ProtectedRoute> },
+        { path: "inventory", element: <ProtectedRoute><InventoryPage /></ProtectedRoute> },
+        { path: "shipments", element: <ProtectedRoute><ShipmentsPage /></ProtectedRoute> },
+        { path: "orders", element: <ProtectedRoute><OrdersPage /></ProtectedRoute> },
+        { path: "documents", element: <ProtectedRoute><DocumentsPage /></ProtectedRoute> },
+        { path: "partners", element: <ProtectedRoute><PartnersPage /></ProtectedRoute> },
+        { path: "notifications", element: <ProtectedRoute><NotificationsPage /></ProtectedRoute> },
         { path: "support", element: <ProtectedRoute><Support /></ProtectedRoute> },
         { path: "logout", element: <ProtectedRoute><LogOut /></ProtectedRoute> },
         { path: "settings", element: <ProtectedRoute><Settings /></ProtectedRoute> , children: [
-          {path: "general", element: <ProtectedRoute><General /></ProtectedRoute>},
-          {path: "userprofile", element: <ProtectedRoute><UserProfile /></ProtectedRoute>},
-          {path: "security", element: <ProtectedRoute><Security /></ProtectedRoute>},
-          {path: "notifs", element: <ProtectedRoute><Notifs /></ProtectedRoute>},
-          {path: "integrations", element: <ProtectedRoute><Integrations /></ProtectedRoute>},
+          {path: "general", element: <ProtectedRoute><GeneralPage /></ProtectedRoute>},
+          {path: "userprofile", element: <ProtectedRoute><UserProfilePage /></ProtectedRoute>},
+          {path: "security", element: <ProtectedRoute><SecurityPage /></ProtectedRoute>},
+          {path: "notificationSettings", element: <ProtectedRoute><NotificationsSettingsPage /></ProtectedRoute>},
+          {path: "integrations", element: <ProtectedRoute><IntegrationsPage /></ProtectedRoute>},
         ]
         },
         { path: "*", element: <Notfound /> }, // صفحة غير موجودة
@@ -57,8 +68,8 @@ export default function App() {
   ]);
 
   return (
-    <AuthProvider> {/* لف التطبيق بـ AuthProvider */}
-      <RouterProvider router={Routes} />
-    </AuthProvider>
+    <Provider store={store}>
+        <RouterProvider router={Routes} />
+    </Provider>
   );
 }

@@ -1,6 +1,6 @@
-import DetailsCard from '../Components/Molecules/DetailsCard'
+import DetailsCard from '../../../../Shared/Components/Molecules/DetailsCard'
 import { AnalyticsIcon, ExclamIcon, InvIcon, TrellaIcon, PlusIcon, PenIcon, RecycleIcon, ExportIcon, FilterIcon, SearchIcon } from './../../../../assets/Icons/SVG';
-import DashBtn from '../Components/Atoms/DashBtn';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 import { useState } from 'react';
 
 export default function Inventory() {
@@ -102,7 +102,7 @@ const currentData = inventoryData.slice(startIndex, startIndex + rowsPerPage);
       <div className="col-9 col-lg-5">
         <div className="d-flex justify-content-between">
           <DashBtn BtnName="Edit" BtnIcon={<PenIcon />} />
-          <DashBtn BtnName="Delete" BtnIcon={<RecycleIcon />} BtnColor='border-0'
+          <DashBtn BtnName="Delete" BtnIcon={<RecycleIcon stroke='#A00303' />} BtnColor='border-0'
             BtnStyle={{backgroundColor: '#F6D2D2' , color: '#A00303'}} />
           <DashBtn BtnName="Export" BtnIcon={<ExportIcon />} />
           <DashBtn BtnName="Filter" BtnIcon={<FilterIcon />} />
@@ -116,7 +116,7 @@ const currentData = inventoryData.slice(startIndex, startIndex + rowsPerPage);
       <table className="table table-hover">
         <thead className="table-primary">
           <tr>
-            <th>Select</th>
+            <th><input type="checkbox" /></th>
             <th>Item code</th>
             <th>Item name</th>
             <th>Serial Number</th>
@@ -129,7 +129,7 @@ const currentData = inventoryData.slice(startIndex, startIndex + rowsPerPage);
             <th>Last updated</th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody>
           {currentData.map((item, idx) => (
             <tr key={idx}>
               <td><input type="checkbox" /></td>
@@ -178,7 +178,8 @@ const currentData = inventoryData.slice(startIndex, startIndex + rowsPerPage);
           </button>
         </div>
       </div>
-      {/* Pagination */}
     </div>
   </>
 }
+
+

@@ -1,0 +1,58 @@
+
+export const inventoryData = [
+  {
+    id: 1,
+    code: 'ITM002',
+    name: 'Fish Tank Filter',
+    serial: '78679126378',
+    category: 'Aquarium',
+    stock: 0,
+    unit: 'Piece',
+    price: '$21',
+    status: 'Out of Stock',
+    location: 'Warehouse A',
+    updated: '2024-01-15 09:30',
+  },
+  {
+    id: 2,
+    code: 'ITM001',
+    name: 'Fish Tank Filter',
+    serial: '78679126378',
+    category: 'Aquarium',
+    stock: 420,
+    unit: 'KG',
+    price: '$100',
+    status: 'In Stock',
+    location: 'Warehouse A',
+    updated: '2024-01-15 09:30',
+  },
+  {
+    id: 3,
+    code: 'ITM003',
+    name: 'Fish Tank Filter',
+    serial: '78679126378',
+    category: 'Aquarium',
+    stock: 3,
+    unit: 'Bag',
+    price: '$200',
+    status: 'Low Stock',
+    location: 'Warehouse A',
+    updated: '2024-01-15 09:30',
+  },
+  {
+    id: 4,
+    code: 'ITM003',
+    name: 'Fish Tank Filter',
+    serial: '78679126378',
+    category: 'Aquarium',
+    stock: 3,
+    unit: 'Bag',
+    price: '$200',
+    status: 'Low Stock',
+    location: 'Warehouse A',
+    updated: '2024-01-15 09:30',
+  },
+];
+
+
+

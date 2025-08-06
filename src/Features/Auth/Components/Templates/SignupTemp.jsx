@@ -1,11 +1,12 @@
-import { useState } from "react";
-import axios from "axios";
+
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import FormInputs from "../Atoms/FormInputs";
 import FormButton from "../Atoms/FormButton";
 import FormPgh from "../Atoms/FormPgh";
-import { BASE_URL } from "../../../../server/server";
-import { useAuth } from "../../../../ProtectedRoute/ProtectedRoute";
+import { useAuthRedux } from '../../../../Shared/hooks/useAuthRedux';
+import { register } from '../../../../Shared/redux/slices/authSlice';
+
 
 export default function SignupTemp() {
   const [formData, setFormData] = useState({
@@ -15,13 +16,16 @@ export default function SignupTemp() {
     companyName: '',
     industry: '',
     size: '',
-    location: '',
+    locationName: '',
+    city: '',
+    state: '',
+    country: '',
+    zipCode: '',
+    latitude: '',
+    longitude: '',
   });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const { setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const API_URL = `${BASE_URL}/api/auth/register`;
+  const { loading, error, dispatch } = useAuthRedux();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -31,26 +35,17 @@ export default function SignupTemp() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-
     const data = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
       data.append(key, value);
     });
-
-    try {
-      await axios.post(API_URL, data);
-      setIsAuthenticated(true); 
-      setLoading(false);
-      navigate('/auth/login'); 
-    } catch (err) {
-      const errMsg = err.response?.data?.message || 'Registration failed. Please try again.';
-      setError(errMsg);
-      setLoading(false);
-    }
+    dispatch(register(data)).then((res) => {
+      if (res.meta.requestStatus === 'fulfilled') {
+        navigate('/auth/login');
+      }
+    });
   };
 
   return (
@@ -70,7 +65,6 @@ export default function SignupTemp() {
           value={formData.email}
           onChange={handleChange}
         />
-       
         <FormInputs
           type="password"
           name="password"
@@ -101,9 +95,51 @@ export default function SignupTemp() {
         />
         <FormInputs
           type="text"
-          name="location"
-          placeholder="Location"
-          value={formData.location}
+          name="locationName"
+          placeholder="Location Name"
+          value={formData.locationName}
+          onChange={handleChange}
+        />
+        <FormInputs
+          type="text"
+          name="city"
+          placeholder="City"
+          value={formData.city}
+          onChange={handleChange}
+        />
+        <FormInputs
+          type="text"
+          name="state"
+          placeholder="State"
+          value={formData.state}
+          onChange={handleChange}
+        />
+        <FormInputs
+          type="text"
+          name="country"
+          placeholder="Country"
+          value={formData.country}
+          onChange={handleChange}
+        />
+        <FormInputs
+          type="text"
+          name="zipCode"
+          placeholder="Zip Code"
+          value={formData.zipCode}
+          onChange={handleChange}
+        />
+        <FormInputs
+          type="text"
+          name="latitude"
+          placeholder="Latitude"
+          value={formData.latitude}
+          onChange={handleChange}
+        />
+        <FormInputs
+          type="text"
+          name="longitude"
+          placeholder="Longitude"
+          value={formData.longitude}
           onChange={handleChange}
         />
         {/* <FormInputs
@@ -119,7 +155,7 @@ export default function SignupTemp() {
         />
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{typeof error === 'string' ? error : error?.message}</p>}
     </>
   );
 }

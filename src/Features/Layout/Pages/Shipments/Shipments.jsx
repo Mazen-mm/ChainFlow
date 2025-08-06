@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import DetailsCard from '../Components/Molecules/DetailsCard';
+import DetailsCard from '../../../../Shared/Components/Molecules/DetailsCard';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 import { AnalyticsIcon, ExclamIcon, ExportIcon, FilterIcon, InvIcon, PlusIcon, SearchIcon, TrellaIcon } from '../../../../assets/Icons/SVG';
-import DashBtn from '../Components/Atoms/DashBtn';
-import ShipTable from '../Components/Templates/ShipTable';
+import ShipmentsTable from '../../../../Shared/Components/Organisms/ShipmentsTable';
 
 export default function Shipments () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -326,7 +326,7 @@ return  <>
     <div className="col-lg-7">
       <div className="card h-100">
         <h5 className='PrimaryText'>Shipments</h5>
-        <ShipTable shipments={currentShipments}/>
+        <ShipmentsTable shipments={currentShipments}/>
           {/* Pagination */}
           <div className="d-flex justify-content-between align-items-center p-3">
             <small className="text-muted">

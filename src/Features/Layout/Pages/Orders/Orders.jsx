@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import DetailsCard from '../Components/Molecules/DetailsCard';
+import DetailsCard from '../../../../Shared/Components/Molecules/DetailsCard';
 import { ClockIcon, ExportIcon, FilterIcon, InvIcon, PlusIcon, RecycleIcon, SearchIcon, TruckCheckIcon, TruckIcon } from '../../../../assets/Icons/SVG';
-import DashBtn from '../Components/Atoms/DashBtn';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 
 export default function Orders () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -282,7 +282,7 @@ export default function Orders () {
         </div>
         <div className="col-9 col-lg-4">
           <div className="d-flex justify-content-between">
-            <DashBtn BtnName="Delete" BtnIcon={<RecycleIcon />} BtnColor='border-0'
+            <DashBtn BtnName="Delete" BtnIcon={<RecycleIcon stroke='#A00303' />} BtnColor='border-0'
               BtnStyle={{backgroundColor: '#F6D2D2' , color: '#A00303'}} />
             <DashBtn BtnName="Export" BtnIcon={<ExportIcon />} onClick={handleExport} />
             <DashBtn BtnName="Filter" BtnIcon={<FilterIcon />} onClick={handleFilter} />

@@ -1,38 +1,29 @@
-import { useState } from "react";
-import axios from "axios";
+
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import FormButton from "../Atoms/FormButton"; 
-import FormInputs from "../Atoms/FormInputs"; 
+import FormButton from "../Atoms/FormButton";
+import FormInputs from "../Atoms/FormInputs";
 import FormCheck from "../Atoms/FormCheck";
 import FormPgh from "../Atoms/FormPgh";
-import { BASE_URL } from "../../../../server/server";
-import { useAuth } from "../../../../ProtectedRoute/ProtectedRoute";
+import { useAuthRedux } from '../../../../Shared/hooks/useAuthRedux';
+import { login } from '../../../../Shared/redux/slices/authSlice';
+
 
 export default function LoginTemp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const { setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const API_URL = `${BASE_URL}/api/auth/login`;
+  const { loading, error, token, dispatch } = useAuthRedux();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      const formData = { email, password };
-      const res = await axios.post(API_URL, formData);
-      setIsAuthenticated(true); 
-      setLoading(false);
-      navigate('/home'); 
-    } catch (err) {
-      const errMsg = err.response?.data?.message || 'Login failed. Please try again.';
-      setError(errMsg);
-      setLoading(false);
+  useEffect(() => {
+    if (token) {
+      navigate('/');
     }
+  }, [token, navigate]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password }));
   };
 
   return (
@@ -55,7 +46,7 @@ export default function LoginTemp() {
         <FormPgh pgh="Don't have an account?" formNav=" Sign Up" to="/auth/signup" />
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{typeof error === 'string' ? error : error?.message}</p>}
     </>
   );
 }

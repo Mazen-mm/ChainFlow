@@ -1,17 +1,12 @@
-// export default function Documents() {
-//   return <>
-//   <h1>Documentssss</h1>
-//   </>
-// }
-
-
-
-
 
 
 import { useState } from 'react';
-import DashBtn from '../Components/Atoms/DashBtn';
-import { DocIcon, DownloadIcon, FilterIcon, FolderIcon, FolderPlsIcon, PlusIcon } from '../../../../assets/Icons/SVG';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
+import { DocIcon, DownloadIcon, FilterIcon, FolderIcon, FolderPlsIcon, PlusIcon }
+    from '../../../../assets/Icons/SVG';
+
+
+
 export default function Documents () {
   const [selectedDocuments, setSelectedDocuments] = useState([]);
   const [documents] = useState([
@@ -113,7 +108,7 @@ export default function Documents () {
         <thead className='table-primary'>
           <tr className='smallSize'>
             <th>
-              <input type="checkbox" className="form-check-input" onChange={handleSelectAll}
+              <input type="checkbox" className="form-check-input fs-6" onChange={handleSelectAll}
                 checked={selectedDocuments.length === documents.length && documents.length > 0} />
             </th>
             <th>Name</th>
@@ -148,7 +143,8 @@ export default function Documents () {
               <td>
                 <button className="btn p-1 text-muted border-0" onClick={() => MoreActions(document.id)}>
                   <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 
+                      0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                   </svg>
                 </button>
               </td>
