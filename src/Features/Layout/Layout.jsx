@@ -1,7 +1,7 @@
 
 import { Outlet } from 'react-router-dom';
-import Header from '../../Features/Layout/Header/Header';
-import Sidebar from '../../Features/Layout/Sidebar/Sidebar';
+import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
 
 export default function Layout() {
   return (
@@ -18,3 +18,5 @@ export default function Layout() {
     </div>
   );
 }
+
+

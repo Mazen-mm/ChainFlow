@@ -33,7 +33,9 @@ p{
 }
 
 
-
+.linearSubscription{
+  background: linear-gradient(270deg,rgba(255, 255, 255, 1) 60%, rgba(127, 163, 247, 0.658) 100%, rgba(255, 255, 255, 1) 0%);;
+}
 .primary {
   background: #0F345C;
   color: white
