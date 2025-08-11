@@ -21,9 +21,17 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await api.post('/auth/login', credentials);
+      // credentials: { email, password, rememberMe }
+      const { rememberMe, ...rest } = credentials;
+      const res = await api.post('/auth/login', rest);
       if (res.data.token) {
-        localStorage.setItem('token', res.data.token);
+        if (rememberMe) {
+          localStorage.setItem('token', res.data.token);
+          sessionStorage.removeItem('token');
+        } else {
+          sessionStorage.setItem('token', res.data.token);
+          localStorage.removeItem('token');
+        }
       }
       return res.data;
     } catch (err) {
@@ -50,7 +58,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
-    token: localStorage.getItem('token') || null,
+    token: localStorage.getItem('token') || sessionStorage.getItem('token') || null,
     loading: false,
     error: null,
     twoFactor: false,
@@ -63,11 +71,13 @@ const authSlice = createSlice({
     setToken(state, action) {
       state.token = action.payload;
       localStorage.setItem('token', action.payload);
+      sessionStorage.setItem('token', action.payload);
     },
     clearAuth(state) {
       state.user = null;
       state.token = null;
       localStorage.removeItem('token');
+      sessionStorage.removeItem('token');
     },
   },
   extraReducers: (builder) => {

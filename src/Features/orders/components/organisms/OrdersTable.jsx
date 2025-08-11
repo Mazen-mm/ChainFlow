@@ -11,12 +11,19 @@ const OrdersTable = ({
   totalPages,
   filteredOrders,
   itemsPerPage,
+  handleDeleteOrder,
+  handleBulkDelete,
 }) => {
   const startIndexDisplay = (currentPage - 1) * itemsPerPage + 1;
   const endIndexDisplay = Math.min(startIndexDisplay + currentOrders.length - 1, filteredOrders.length);
 
   return (
     <div className="table-responsive rounded-3 border">
+      <div className="d-flex justify-content-end p-2">
+        <button className="btn btn-danger btn-sm" onClick={handleBulkDelete} disabled={selectedOrders.length === 0}>
+          Delete Selected
+        </button>
+      </div>
       <table className="table table-hover">
         <thead className="table-primary">
           <tr>
@@ -30,22 +37,28 @@ const OrdersTable = ({
             <th>Items</th>
             <th>Status</th>
             <th>Created date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {currentOrders.map((order) => (
-            <tr key={order.id}>
+            <tr key={order._id}>
               <td>
                 <input type="checkbox" className="form-check-input"
-                  checked={selectedOrders.includes(order.id)}
-                  onChange={() => handleSelectOrder(order.id)} />
+                  checked={selectedOrders.includes(order._id)}
+                  onChange={() => handleSelectOrder(order._id)} />
               </td>
-              <td className="fw-semibold text-dark">{order.orderCode}</td>
-              <td className="text-dark">${order.value.toLocaleString()}</td>
-              <td className="text-muted">{order.supplier}</td>
-              <td className="text-muted">{order.items} items</td>
+              <td className="fw-semibold text-dark">{order.orderNumber}</td>
+              <td className="text-dark">${order.totalAmount?.toLocaleString?.() ?? order.totalAmount}</td>
+              <td className="text-muted">{order.supplier?.name || order.supplier || '-'}</td>
+              <td className="text-muted">{Array.isArray(order.items) ? order.items.length : order.items} items</td>
               <td>{getStatusBadge(order.status)}</td>
-              <td className="text-muted">{order.createdDate}</td>
+              <td className="text-muted">{order.createdAt ? new Date(order.createdAt).toLocaleString() : '-'}</td>
+              <td>
+                <button className="btn btn-sm btn-danger" onClick={() => handleDeleteOrder(order._id)}>
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

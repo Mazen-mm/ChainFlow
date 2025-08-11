@@ -12,6 +12,7 @@ import { login } from '../../../../Shared/redux/slices/authSlice';
 export default function LoginTemp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
   const { loading, error, token, dispatch } = useAuthRedux();
 
@@ -23,7 +24,7 @@ export default function LoginTemp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+    dispatch(login({ email, password, rememberMe }));
   };
 
   return (
@@ -41,7 +42,7 @@ export default function LoginTemp() {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <FormCheck />
+        <FormCheck checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />
         <FormButton nameBtn={loading ? "Logging In..." : "Log In"} disabled={loading} />
         <FormPgh pgh="Don't have an account?" formNav=" Sign Up" to="/auth/signup" />
       </form>

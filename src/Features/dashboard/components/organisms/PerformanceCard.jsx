@@ -2,12 +2,14 @@ import { Line } from 'react-chartjs-2';
 import {Chart as ChartJS,LineElement,PointElement,CategoryScale,LinearScale,Tooltip,Filler} from 'chart.js';
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Filler);
 
-export default function PerformanceCard() {
-  const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const values = [60, 70, 55, 45, 90, 65];
-
-  const data = {
-    labels: weekdays,
+export default function PerformanceCard({ data }) {
+  // Fallback to static if not provided
+  const labels = data?.labels || ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const values = data?.values || [60, 70, 55, 45, 90, 65];
+  const best = Math.max(...values);
+  const today = values[values.length - 1];
+  const chartData = {
+    labels,
     datasets: [
       {
         label: 'Sales',
@@ -26,7 +28,6 @@ export default function PerformanceCard() {
       },
     ],
   };
-
   const options = {
     responsive: true,
     plugins: {
@@ -39,21 +40,20 @@ export default function PerformanceCard() {
     },
     scales: {
       y: {
-        display:false,
+        display: false,
         min: 0,
-        max: 100,
+        max: Math.max(...values, 100),
       },
     },
   };
-
   return <>
     <div>
       <h6 className="text-center fw-bold mb-3">Overall Performance</h6>
-      <Line data={data} options={options}/>
+      <Line data={chartData} options={options} />
       <div className="d-flex justify-content-between mt-3">
-        <small className="text-muted">Best<h6 className="fw-bold text-dark">$90.00</h6></small>
-        <small className="text-muted">Today<h6 className="fw-bold text-dark">$45.00</h6></small>
+        <small className="text-muted">Best<h6 className="fw-bold text-dark">${best}</h6></small>
+        <small className="text-muted">Today<h6 className="fw-bold text-dark">${today}</h6></small>
       </div>
     </div>
-  </>
+  </>;
 }

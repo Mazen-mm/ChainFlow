@@ -2,12 +2,12 @@ import { ExportIcon, FilterIcon, PenIcon, PlusIcon, RecycleIcon } from '../../..
 import { SearchInput } from '../../../../Shared/Components/Atoms/SearchInput';
 import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 
-export function InventoryToolbar({ onSearch }) {
+export function InventoryToolbar({ onSearch, onAdd }) {
   return (
     <div className="row align-items-center my-2">
       <div className="col-12 col-lg-5"><SearchInput onSearch={onSearch} /></div>
       <div className="col-3 col-lg-2">
-        <DashBtn BtnName="Add new item" BtnIcon={<PlusIcon />} BtnColor="btn-primary"/>
+        <DashBtn BtnName="Add new item" BtnIcon={<PlusIcon />} BtnColor="btn-primary" onClick={onAdd} />
       </div>
       <div className="col-9 col-lg-5">
         <div className="d-flex justify-content-between">

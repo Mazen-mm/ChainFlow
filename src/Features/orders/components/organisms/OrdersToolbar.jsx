@@ -4,7 +4,7 @@ import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 import DetailsCard from '../../../../Shared/Components/Molecules/DetailsCard';
 import { InvIcon, ClockIcon, TruckIcon, TruckCheckIcon } from '../../../../assets/Icons/SVG';
 
-const OrdersToolbar = ({ searchTerm, setSearchTerm, handleCreateOrder, handleExport, handleFilter }) => {
+const OrdersToolbar = ({ searchTerm, setSearchTerm, handleCreateOrder, handleExport, handleFilter, handleBulkDelete, selectedOrders }) => {
   return (
     <>
       <div className="row flex-row">
@@ -31,7 +31,7 @@ const OrdersToolbar = ({ searchTerm, setSearchTerm, handleCreateOrder, handleExp
           <DashBtn BtnName="Create Order" BtnIcon={<PlusIcon />} BtnColor='btn-primary' onClick={handleCreateOrder} />
         </div>
         <div className="col-9 col-lg-4 d-flex justify-content-between">
-          <DashBtn BtnName="Delete" BtnIcon={<RecycleIcon stroke='#A00303' />} BtnColor='border-0' BtnStyle={{ backgroundColor: '#F6D2D2', color: '#A00303' }} />
+          <DashBtn BtnName="Delete" BtnIcon={<RecycleIcon stroke='#A00303' />} BtnColor='border-0' BtnStyle={{ backgroundColor: '#F6D2D2', color: '#A00303' }} onClick={handleBulkDelete} disabled={selectedOrders.length === 0} />
           <DashBtn BtnName="Export" BtnIcon={<ExportIcon />} onClick={handleExport} />
           <DashBtn BtnName="Filter" BtnIcon={<FilterIcon />} onClick={handleFilter} />
         </div>

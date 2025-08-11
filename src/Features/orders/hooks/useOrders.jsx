@@ -1,134 +1,50 @@
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchOrders, createOrder, updateOrder, deleteOrder } from '../slice';
+  // Delete Order
+  const handleDeleteOrder = (orderId) => {
+    if (window.confirm('Are you sure you want to delete this order?')) {
+      dispatch(deleteOrder(orderId));
+    }
+  };
+
+  // Bulk Delete
+  const handleBulkDelete = () => {
+    if (selectedOrders.length === 0) return;
+    if (window.confirm('Are you sure you want to delete selected orders?')) {
+      selectedOrders.forEach(id => dispatch(deleteOrder(id)));
+      setSelectedOrders([]);
+    }
+  };
+
+const itemsPerPage = 12;
 
 const useOrders = () => {
-  const [orders] = useState([
-    {
-      id: 1,
-      orderCode: 'ORD-2025-1845',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Approved',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 2,
-      orderCode: 'ORD-2025-1846',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Cancelled',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 3,
-      orderCode: 'ORD-2025-1847',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Delivered',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 4,
-      orderCode: 'ORD-2025-1848',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Ready',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 5,
-      orderCode: 'ORD-2025-1849',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Shipped',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 6,
-      orderCode: 'ORD-2025-1850',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'In Production',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 7,
-      orderCode: 'ORD-2025-1851',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Ready',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 8,
-      orderCode: 'ORD-2025-1852',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Shipped',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 9,
-      orderCode: 'ORD-2025-1853',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Waiting',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 10,
-      orderCode: 'ORD-2025-1854',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Shipped',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 11,
-      orderCode: 'ORD-2025-1855',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Shipped',
-      createdDate: '2024-01-15 09:30'
-    },
-    {
-      id: 12,
-      orderCode: 'ORD-2025-1855',
-      value: 24500,
-      supplier: 'TechGlobal Inc.',
-      items: 12,
-      status: 'Shipped',
-      createdDate: '2024-01-15 09:30'
-    },
-  ]);
+  const dispatch = useDispatch();
+  const { orders, loading, error } = useSelector(state => state.orders);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [newOrder, setNewOrder] = useState({ value: '', supplier: '', items: '' });
-  const itemsPerPage = 12;
+  const [newOrder, setNewOrder] = useState({ value: '', supplier: '', items: [] });
 
-  const filteredOrders = orders.filter(order =>
-    order.orderCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    order.supplier.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    order.status.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, [dispatch]);
+
+  // Filtering
+  const filteredOrders = (orders || []).filter(order =>
+    (order.orderNumber || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (order.supplier || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (order.status || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
-
   const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentOrders = filteredOrders.slice(startIndex, startIndex + itemsPerPage);
 
+  // Selection
   const handleSelectOrder = (orderId) => {
     setSelectedOrders(prev =>
       prev.includes(orderId)
@@ -136,38 +52,50 @@ const useOrders = () => {
         : [...prev, orderId]
     );
   };
-
   const handleSelectAll = () => {
     setSelectedOrders(prev =>
-      prev.length === currentOrders.length ? [] : currentOrders.map(order => order.id)
+      prev.length === currentOrders.length ? [] : currentOrders.map(order => order._id)
     );
   };
 
+  // Create Order
   const handleCreateOrder = () => setShowCreateModal(true);
   const handleCloseModal = () => {
     setShowCreateModal(false);
     setNewOrder({ value: '', supplier: '', items: '' });
   };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewOrder(prev => ({ ...prev, [name]: value }));
   };
-
-  const handleSubmitOrder = () => {
-    if (!newOrder.value || !newOrder.supplier || !newOrder.items) {
-      alert('Please fill in all fields');
+  const handleSubmitOrder = (orderData) => {
+    const order = orderData || newOrder;
+    if (!order.value || !order.supplier || !order.items || order.items.length === 0) {
+      alert('Please fill in all fields and add at least one product');
       return;
     }
-    console.log('Order Created:', newOrder);
+    dispatch(createOrder({
+      supplierId: order.supplier,
+      data: {
+        totalAmount: Number(order.value),
+        items: order.items.map(item => ({
+          productId: item.productId,
+          productName: item.productName,
+          quantity: Number(item.quantity),
+        })),
+      },
+    }));
     handleCloseModal();
   };
 
+  // Export/Filter (implement as needed)
   const handleExport = () => console.log('Export clicked');
   const handleFilter = () => console.log('Filter clicked');
 
   return {
     orders,
+    loading,
+    error,
     searchTerm,
     setSearchTerm,
     currentPage,
@@ -178,15 +106,18 @@ const useOrders = () => {
     showCreateModal,
     handleCreateOrder,
     handleCloseModal,
-    newOrder,
-    handleInputChange,
-    handleSubmitOrder,
+  newOrder,
+  setNewOrder,
+  handleInputChange,
+  handleSubmitOrder,
     handleExport,
     handleFilter,
     filteredOrders,
     currentOrders,
     totalPages,
     itemsPerPage,
+  handleDeleteOrder,
+  handleBulkDelete,
   };
 };
 

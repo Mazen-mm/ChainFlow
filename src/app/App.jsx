@@ -25,7 +25,6 @@ import EmployeeChat from "../Features/employeeChat/employeeChat";
 
 import NotificationsPage from "../Features/notifications/pages/NotificationsPage";
 import Support from '../Features/support/SupportPage';
-import Logout from "../Features/logout/Logout";
 
 import Settings from "../Features/settings/Settings";
 import GeneralPage from "../Features/settings/general/pages/GeneralPage";
@@ -56,7 +55,6 @@ export default function App() {
         { path: "support", element: <ProtectedRoute><Support /></ProtectedRoute> },
         { path: "employees/employeeInfo", element: <ProtectedRoute><EmployeeInfo/></ProtectedRoute> },
         { path: "employees/employeeChat", element: <ProtectedRoute><EmployeeChat/></ProtectedRoute> },
-        { path: "logout", element: <ProtectedRoute><Logout /></ProtectedRoute> },
         { path: "settings", element: <ProtectedRoute><Settings /></ProtectedRoute> , children: [
           {path: "general", element: <ProtectedRoute><GeneralPage /></ProtectedRoute>},
           {path: "userprofile", element: <ProtectedRoute><UserProfilePage /></ProtectedRoute>},
