@@ -1,6 +1,6 @@
 
-import Chart from '../Molecules/Chart';
-import BudgetDetails from '../molecules/BudgetDetails';
+import Chart from '../molecules/Chart';
+import BudgetDetails from "../molecules/BudgetDetails";
 import 'swiper/css';
 
 export default function Budget() {
@@ -11,11 +11,11 @@ const colors = [ '#b667f1' , '#0c2d4a' , '#f75c5c' ];
 
   return  <>
     <small className='fw-bolder'>Budget Overview</small>
-    <hr className='mt-0'/>
+    <hr className='mt-1'/>
     <div className="row align-items-center">
       <div className="col-7 text-center">
         <Chart data={cost} colors={colors} labels={labels} />
-        <button className='btn primary'>Details</button>
+        <button className='btn primary mt-3'>Details</button>
       </div>
       <div className="col-5 d-flex flex-column gap-2 text-center">
         <BudgetDetails cost={cost[0].toLocaleString()} labels={labels[0]} bg={colors[0]} />

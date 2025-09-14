@@ -23,10 +23,10 @@ export default function ShipmentsPage() {
     <>
       {/* Summary Cards */}
       <div className="row">
-        <DetailsCard detailName="Total Shipments" detailNum="1,247" icon={<InvIcon fill='none' stroke="#5C8DFF" />} />
-        <DetailsCard detailName="In Transit" detailNum="342" icon={<ExclamIcon stroke="#5C8DFF" />} />
-        <DetailsCard detailName="Delayed" detailNum="28" icon={<TrellaIcon fill="#5C8DFF" />} />
-        <DetailsCard detailName="Delivered Today" detailNum="67" icon={<AnalyticsIcon stroke="#5C8DFF" />} />
+        <DetailsCard name="Total Shipments" count="1,247" icon={<InvIcon fill='none' stroke="#5C8DFF" />} />
+        <DetailsCard name="In Transit" count="342" icon={<ExclamIcon stroke="#5C8DFF" />} />
+        <DetailsCard name="Delayed" count="28" icon={<TrellaIcon fill="#5C8DFF" />} />
+        <DetailsCard name="Delivered Today" count="67" icon={<AnalyticsIcon stroke="#5C8DFF" />} />
       </div>
 
       {/* Toolbar */}

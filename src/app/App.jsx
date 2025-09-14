@@ -13,27 +13,32 @@ import Notfound from "../Shared/Notfound/Notfound";
 import Home from "../Features/Home/Home";
 import Layout from "../Features/Layout/Layout";
 
-import DashboardPage from "../Features/dashboard/pages/DashboardPage";
-import InventoryPage from './../Features/inventory/pages/InventoryPage';
-import ShipmentsPage from "../Features/shipments/pages/ShipmentsPage";
-import OrdersPage from "../Features/orders/pages/OrdersPage";
-import DocumentsPage from './../Features/documents/pages/DocumentsPage';
-import PartnersPage from './../Features/partners/pages/PartnersPage';
-import EmployeesPage from "../Features/employees/pages/EmployeesPage";
-import EmployeeInfo from "../Features/employeeInfo/EmployeeInfo";
-import EmployeeChat from "../Features/employeeChat/employeeChat";
+import DashboardPage from "../Features/Dashboard/pages/DashboardPage";
+import InventoryPage from './../Features/Inventory/pages/InventoryPage';
+import ShipmentsPage from "../Features/Shipments/pages/ShipmentsPage";
+import OrdersPage from "../Features/Orders/pages/OrdersPage";
+import DocumentsPage from './../Features/Documents/pages/DocumentsPage';
+import PartnersPage from './../Features/Partners/pages/PartnersPage';
+import EmployeesPage from "../Features/Employees/pages/EmployeesPage";
+import EmployeeInfo from "../Features/EmployeeInfo/EmployeeInfo";
+import EmployeeChat from "../Features/EmployeeChat/employeeChat";
 
-import NotificationsPage from "../Features/notifications/pages/NotificationsPage";
+import NotificationsPage from "../Features/Notifications/pages/NotificationsPage";
 import Support from '../Features/support/SupportPage';
 import Logout from "../Features/logout/Logout";
 
-import Settings from "../Features/settings/Settings";
-import GeneralPage from "../Features/settings/general/pages/GeneralPage";
-import UserProfilePage from './../Features/settings/userProfile/pages/UserProfilePage';
-import SecurityPage from './../Features/settings/security/pages/SecurityPage';
-import NotificationsSettingsPage from "../Features/settings/notificationSettings/pages/NotificationSettingsPage";
-import IntegrationsPage from "../Features/settings/integrations/pages/IntegrationsPage";
-import BillingSubscription from "../Features/settings/BillingSubscription/BillingSubscription";
+import Settings from "../Features/Settings/Settings";
+import GeneralPage from "../Features/Settings/general/pages/GeneralPage";
+import UserProfilePage from './../Features/Settings/userProfile/pages/UserProfilePage';
+import SecurityPage from './../Features/Settings/security/pages/SecurityPage';
+import NotificationsSettingsPage from "../Features/Settings/notificationSettings/pages/NotificationSettingsPage";
+import IntegrationsPage from "../Features/Settings/integrations/pages/IntegrationsPage";
+import BillingSubscription from "../Features/Settings/BillingSubscription/BillingSubscription";
+import AdminDashboardPage from './../Features/Admin/AdminDashboard/pages/AdminDashboardPage';
+import PlansPage from './../Features/Admin/Plans/pages/PlansPage';
+import CompaniesPage from './../Features/Admin/Companies/pages/CompaniesPage';
+import UserManagementPage from './../Features/Admin/UserManagement/pages/UserManagementPage';
+import Admin from "../Features/Admin/Admin";
 
 export default function App() {
   const Routes = createBrowserRouter([
@@ -64,7 +69,14 @@ export default function App() {
           {path: "notificationSettings", element: <ProtectedRoute><NotificationsSettingsPage /></ProtectedRoute>},
           {path: "integrations", element: <ProtectedRoute><IntegrationsPage /></ProtectedRoute>},
           {path: "billingSubscription", element: <ProtectedRoute><BillingSubscription /></ProtectedRoute>},
-        ]
+          ]
+        },
+        { path: "admin", element: <ProtectedRoute><Admin /></ProtectedRoute> , children: [
+          {path: "dashboard", element: <ProtectedRoute><AdminDashboardPage /></ProtectedRoute>},
+          {path: "userManagement", element: <ProtectedRoute><UserManagementPage /></ProtectedRoute>},
+          {path: "companies", element: <ProtectedRoute><CompaniesPage /></ProtectedRoute>},
+          {path: "plans", element: <ProtectedRoute><PlansPage /></ProtectedRoute>},
+          ]
         },
         { path: "*", element: <Notfound /> }, // صفحة غير موجودة
       ],

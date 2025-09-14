@@ -3,7 +3,7 @@ import PartnerListItem from '../components/atoms/PartnerListItem';
 import PartnerDetailsPanel from '../components/organisms/PartnerDetailsPanel';
 import { SearchIcon, FilterIcon } from '../../../assets/Icons/SVG';
 import DashBtn from '../../../Shared/Components/Atoms/DashBtn';
-import usePartners from './../utils/usePartnerData';
+import usePartners from '../utils/usePartnerData';
 
 export default function PartnersPage() {
   const [searchTerm, setSearchTerm] = useState('');

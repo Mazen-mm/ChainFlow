@@ -1,10 +1,10 @@
 import React from 'react';
-import OrdersToolbar from './../components/organisms/OrdersToolbar';
-import OrdersTable from './../components/organisms/OrdersTable';
-import CreateOrderModal from './../components/organisms/CreateOrderModal';
+import OrdersToolbar from '../components/organisms/OrdersToolbar';
+import OrdersTable from '../components/organisms/OrdersTable';
+import CreateOrderModal from '../components/organisms/CreateOrderModal';
 import useOrders from '../hooks/useOrders';
 
-const OrdersPage = () => {
+export default function OrdersPage() {
   const ordersState = useOrders();
 
   return (
@@ -19,4 +19,3 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;

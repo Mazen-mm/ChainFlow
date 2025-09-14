@@ -1,4 +1,5 @@
-import { MessageIcon } from './../../../../assets/Icons/SVG';
+import { MessageIcon } from '../../../../assets/Icons/SVG';
+import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 
 export default function PartnerListItem({ partner, selected, onClick }) {
   const getStatusColor = (status) => (status === 'online' ? 'success' : 'secondary');
@@ -15,9 +16,7 @@ export default function PartnerListItem({ partner, selected, onClick }) {
         <p className="fw-bold">{partner.name}</p>
         <small>{partner.type} • {partner.lastActivity}</small>
       </div>
-      <button className="btn border ms-auto">
-        <MessageIcon />
-      </button>
+      <DashBtn BtnIcon={<MessageIcon />} BtnColor="btn border-2 ms-auto"  />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import DashBtn from './../../Shared/Components/Atoms/DashBtn';
-import { AnalyticsIcon, BoxIcon, DocIcon, GridGapIcon, LockIcon, MessageIcon, TrellaIcon } from './../../assets/Icons/SVG';
+import DashBtn from '../../Shared/Components/Atoms/DashBtn';
+import { AnalyticsIcon, BoxIcon, DocIcon, GridGapIcon, LockIcon, MessageIcon, TrellaIcon } from '../../assets/Icons/SVG';
 import { useNavigate } from 'react-router-dom';
 
 

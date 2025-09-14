@@ -3,7 +3,7 @@ import CompanyDetails from '../molecules/CompanyDetails'
 
 export default function CompanyCard() {
   return <>
-    <small className='fw-bolder'>Budget Overview</small>
+    <small className='fw-bolder'>Company Overview</small>
     <hr className='mt-0'/>
     <div className="row justify-content-evenly">
       <div className="col-lg-4 col-md-12 p-0">

@@ -31,7 +31,7 @@ export default function DocumentsToolbar () {
       </div>
       <div className="col-lg-7 col-12">
         <div className="d-flex justify-content-between">
-          <DashBtn BtnIcon={<PlusIcon/>} BtnName="Upload Document" onClick={UploadDocument} BtnColor='btn-primary'/>
+          <DashBtn BtnIcon={<PlusIcon />} BtnName="Upload Document" onClick={UploadDocument} BtnColor='btn-primary'/>
           <DashBtn BtnIcon={<FolderPlsIcon/>} BtnName={'Create Folder'} onClick={CreateFolder} />
           <DashBtn BtnIcon={<DownloadIcon/>} BtnName={'Download'} onClick={Download} />
           <DashBtn BtnIcon={<FilterIcon/>} BtnName={'Filter'} onClick={Filter} />

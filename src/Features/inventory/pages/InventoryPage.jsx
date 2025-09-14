@@ -1,15 +1,22 @@
 
-import { DetailsCardGroup } from './../components/molecules/DetailsCardGroup';
 import { InventoryToolbar } from '../components/organisms/InventoryToolbar';
 import { InventoryTable } from '../components/organisms/InventoryTable';
 import { useInventoryPagination } from '../hooks/useInventoryPagination';
+import DetailsCard from '../../../Shared/Components/Molecules/DetailsCard';
+import { AnalyticsIcon, ExclamIcon, InvIcon, TrellaIcon } from '../../../assets/Icons/SVG';
 
 
 export default function InventoryPage() {
   const { currentData, total, startIndex, page, setPage, totalPages } = useInventoryPagination();
 
   return <>
-      <DetailsCardGroup />
+      {/* Summary Cards */}
+      <div className="row">
+        <DetailsCard name="Total Items" count="2,847" icon={<InvIcon fill='none' stroke={'#5C8DFF'} />} />
+        <DetailsCard name="Low Stock Alerts" count="24" icon={<ExclamIcon stroke='#5C8DFF'/>} />
+        <DetailsCard name="Incoming Shipments" count="12" icon={<TrellaIcon fill={'#5C8DFF'} />} />
+        <DetailsCard name="Total Value" count="$1.2M" icon={<AnalyticsIcon stroke='#5C8DFF'/>} />
+      </div>
       <InventoryToolbar onSearch={(q) => console.log('searching', q)} />
       <InventoryTable data={currentData} />
       {/* Pagination controls */}

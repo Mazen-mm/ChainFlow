@@ -1,7 +1,8 @@
+import React from 'react'
 
-export default function DetailsCard({name , count , icon}) {
+export default function DetailsThreeCards({name , count , icon}) {
   return  <>
-  <div className="col-6 col-lg-3 p-1">
+  <div className="col-6 col-lg-4 p-1">
     <div className="card px-4 d-flex flex-row justify-content-between align-items-center">
       <div className="py-2">
         <p className='opacity-75 smallSize'>{name}</p>

@@ -1,7 +1,7 @@
 
 
 import logoBrand from '../../assets/Images/Logo-brand.png'
-import { SettingIcon } from '../../assets/Icons/SVG.jsx';
+import { SettingIcon, UserIcon } from '../../assets/Icons/SVG.jsx';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 
@@ -32,8 +32,11 @@ export default function Header() {
           </div>
         </>
       </div>
-      <div className='d-flex align-items-center'>
-        <button onClick={() => navHome('/')} className='btn btn-info mx-3'>Back to Home</button>
+      <div className='d-flex align-items-center gap-2'>
+        <button onClick={() => navHome('/')} className='btn btn-info'>Back to Home</button>
+        <NavLink to='admin/dashboard' className="btn btn-info" href="#">  
+          Admin
+        </NavLink>
         <NavLink to='settings/general' className="nav-link" href="#">  
           <SettingIcon fill='none' pathStroke='#5C8DFF' circleStroke='#5C8DFF'/>
         </NavLink>

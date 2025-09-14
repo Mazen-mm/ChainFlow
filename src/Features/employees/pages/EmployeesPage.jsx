@@ -18,7 +18,7 @@ export default function EmployeesPage() {
         </div>
         <div className="d-flex gap-2">
           <DashBtn BtnIcon={<FilterIcon />} BtnColor='bg-white' />
-          <DashBtn BtnIcon={<PlusIcon fill='currentColor' />} BtnColor='bg-white' />
+          <DashBtn BtnIcon={<PlusIcon />} BtnColor='bg-white' />
         </div>
       </div>
       {/* Nav List */}

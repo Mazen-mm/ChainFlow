@@ -65,6 +65,9 @@ p{
 .PrimaryText{
   color: #0f345c;
 }
+.PrimaryBg{
+  background-color: #0f345c;
+}
 
 /* ////////////////////////// */
 /* ////////////////////////// */
@@ -192,3 +195,8 @@ p{
   border-color: #ff2802;
 }
 
+
+.law{
+  border: 2px dashed #07105136;
+  border-radius: 16px;
+}

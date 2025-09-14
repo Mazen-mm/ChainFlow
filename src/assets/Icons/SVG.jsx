@@ -582,7 +582,7 @@ export function ExclamIcon ({stroke}) {
 }
 
 
-export function PlusIcon ({fill}) {
+export function PlusIcon () {
   return  <>
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M19 11H13V5C13 4.73478 12.8946 4.48043 12.7071 4.29289C12.5196 4.10536 12.2652 4 12 
@@ -591,7 +591,7 @@ export function PlusIcon ({fill}) {
       12.7071C4.48043 12.8946 4.73478 13 5 13H11V19C11 19.2652 11.1054 19.5196 11.2929 19.7071C11.4804 
       19.8946 11.7348 20 12 20C12.2652 20 12.5196 19.8946 12.7071 19.7071C12.8946 19.5196 13 19.2652 13 
       19V13H19C19.2652 13 19.5196 12.8946 19.7071 12.7071C19.8946 12.5196 20 12.2652 20 12C20 11.7348 
-      19.8946 11.4804 19.7071 11.2929C19.5196 11.1054 19.2652 11 19 11Z" fill={fill}/>
+      19.8946 11.4804 19.7071 11.2929C19.5196 11.1054 19.2652 11 19 11Z" fill="currentColor" />
   </svg>
   </>
 }
@@ -908,3 +908,18 @@ export function BillingIcon ({stroke}) {
   </svg>
 </>
 }
+
+export function AddDocumentIcon () {
+  return  <>
+  <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19.25 2.5H5.25C4.69771 2.5 4.25 2.94771 4.25 3.5V21.5C4.25 22.0523 4.69771 22.5 5.25 
+      22.5H19.25C19.8023 22.5 20.25 22.0523 20.25 21.5V3.5C20.25 2.94771 19.8023 2.5 19.25 2.5Z" 
+      stroke="#5C8DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M8.75 15.5H15.75" stroke="#5C8DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M8.75 18.5H12.25" stroke="#5C8DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M9.75 9H14.75" stroke="#5C8DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12.25 11.5V6.5" stroke="#5C8DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+</>
+}
+
