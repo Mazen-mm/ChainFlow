@@ -1,9 +1,9 @@
 // src/features/shipments/components/ShipmentsToolbar.js
 import DashBtn from '../../../../Shared/Components/Atoms/DashBtn';
 import { FilterIcon, ExportIcon, PlusIcon, SearchIcon } from '../../../../assets/Icons/SVG';
-import { useShipments } from '../../hooks/useShipments';
+import { useShipments } from '../../../Shipments/hooks/useShipments';
 
-export default function ShipmentsToolbar() {
+export default function ShipmentsToolbar({ onCreateShipment }) {
   const { searchTerm, setSearchTerm } = useShipments();
 
   return (
@@ -21,7 +21,7 @@ export default function ShipmentsToolbar() {
         </div>
       </div>
       <div className="col-md-5 d-flex justify-content-between">
-        <DashBtn BtnName="Create Shipment" BtnIcon={<PlusIcon />} BtnColor="btn-primary" />
+        <DashBtn BtnName="Create Shipment" BtnIcon={<PlusIcon />} BtnColor="btn-primary" onClick={onCreateShipment} />
         <DashBtn BtnName="Export" BtnIcon={<ExportIcon />} />
         <DashBtn BtnName="Filter" BtnIcon={<FilterIcon />} />
       </div>

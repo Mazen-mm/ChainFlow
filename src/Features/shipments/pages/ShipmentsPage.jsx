@@ -2,12 +2,30 @@
 
 import { useShipments } from '../hooks/useShipments';
 import DetailsCard from '../../../Shared/Components/Molecules/DetailsCard';
-import ShipmentsToolbar from '../components/molecules/ShipmentsToolbar';
+import ShipmentsToolbar from '../components/organisms/ShipmentsToolbar';
+import React, { useState } from 'react';
+import CreateShipmentModal from '../components/molecules/CreateShipmentModal';
 import ShipmentsTableWrapper from '../components/organisms/ShipmentsTableWrapper';
 import ActivityCard from '../components/atoms/ActivityCard';
 import { AnalyticsIcon, ExclamIcon, InvIcon, TrellaIcon } from '../../../assets/Icons/SVG';
 
 export default function ShipmentsPage() {
+  // Modal state
+  const [showModal, setShowModal] = useState(false);
+
+  // Modal open/close handlers
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  // Handle shipment creation (stub)
+
+  // const handleCreateShipment = (formData) => {
+  //   // TODO: Connect to backend or update state
+  //   setShowModal(false);
+  // };
+
+
+
   const {
     currentShipments,
     activities,
@@ -29,8 +47,12 @@ export default function ShipmentsPage() {
         <DetailsCard name="Delivered Today" count="67" icon={<AnalyticsIcon stroke="#5C8DFF" />} />
       </div>
 
-      {/* Toolbar */}
-      <ShipmentsToolbar />
+  {/* Toolbar */}
+  <ShipmentsToolbar onCreateShipment={handleOpenModal} />
+
+  {/* Modal */}
+  <CreateShipmentModal show={showModal} onClose={handleCloseModal} />
+  {/* onSubmit={handleCreateShipment} */}
 
       {/* Main Section */}
       <div className="row">
